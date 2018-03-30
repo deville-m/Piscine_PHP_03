@@ -7,7 +7,7 @@ if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])) {
 }
 else {
 	if ($_SERVER['PHP_AUTH_USER'] === "zaz" && $_SERVER['PHP_AUTH_PW'] === "jaimelespetitsponeys") {
-		if (!($content = file_get_contents("../img/42.png")))
+		if (!($content = @file_get_contents("../img/42.png")))
 			exit("Can't read image\n");
 		if (!($image = base64_encode($content)))
 			exit("Can't encode image\n");
