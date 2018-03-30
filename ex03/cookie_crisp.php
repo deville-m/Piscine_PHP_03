@@ -1,9 +1,9 @@
 <?php
 
-if (!isset($_GET["action"]))
+if (!isset($_GET))
 	exit();
 if ($_GET["action"] === "set" && isset($_GET["name"]) && isset($_GET["value"])) {
-	setcookie($_GET["name"], $_GET["value"], time()+60*60*24);
+	@setcookie($_GET["name"], $_GET["value"], time()+60*60*24);
 }
 else if ($_GET["action"] === "get")
 {
@@ -12,6 +12,6 @@ else if ($_GET["action"] === "get")
 }
 else if ($_GET["action"] === "del" && isset($_GET["name"])) {
 	unset($_COOKIE[$_GET['name']]);
-	setcookie($_GET["name"], $_GET["value"], time()-3600);
+	@setcookie($_GET["name"], $_GET["value"], time()-3600);
 }
 ?>
